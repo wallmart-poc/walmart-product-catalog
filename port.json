@@ -1,0 +1,13 @@
+{
+  "identifier": "walmart-product-catalog",
+  "title": "Product Catalog Service",
+  "blueprint": "service",
+  "properties": {
+    "lifecycle": "production",
+    "criticality": "high",
+    "slack_channel": "#catalog-discovery"
+  },
+  "relations": {
+    "depends_on": []
+  }
+}

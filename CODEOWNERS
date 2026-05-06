@@ -1,0 +1,4 @@
+# Product catalog gRPC service and the canonical product data file.
+# Owned by the team responsible for product listing, lookup, and the
+# discovery surfaces that read from this catalog.
+*   @wallmart-poc/catalog-discovery

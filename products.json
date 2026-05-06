@@ -1,0 +1,112 @@
+{
+    "products": [
+        {
+            "id": "OLJCESPC7Z",
+            "name": "Polarized Sunglasses",
+            "description": "Affordable everyday sunglasses for errands, weekend trips, and sunny commutes.",
+            "picture": "/static/img/products/sunglasses.jpg",
+            "priceUsd": {
+                "currencyCode": "USD",
+                "units": 19,
+                "nanos": 990000000
+            },
+            "categories": ["apparel", "accessories"]
+        },
+        {
+            "id": "66VCHSJNUP",
+            "name": "Cotton Tank Top",
+            "description": "A comfortable basic tank for casual wear, layering, and warm-weather days.",
+            "picture": "/static/img/products/tank-top.jpg",
+            "priceUsd": {
+                "currencyCode": "USD",
+                "units": 18,
+                "nanos": 990000000
+            },
+            "categories": ["apparel", "clothing"]
+        },
+        {
+            "id": "1YMWWN1N4O",
+            "name": "Everyday Wrist Watch",
+            "description": "A classic watch with a clean finish for workdays, events, and daily use.",
+            "picture": "/static/img/products/watch.jpg",
+            "priceUsd": {
+                "currencyCode": "USD",
+                "units": 109,
+                "nanos": 990000000
+            },
+            "categories": ["apparel", "accessories"]
+        },
+        {
+            "id": "L9ECAV7KIM",
+            "name": "Casual Loafers",
+            "description": "Versatile slip-on shoes for the office, travel, and weekend plans.",
+            "picture": "/static/img/products/loafers.jpg",
+            "priceUsd": {
+                "currencyCode": "USD",
+                "units": 89,
+                "nanos": 990000000
+            },
+            "categories": ["apparel", "footwear"]
+        },
+        {
+            "id": "2ZYFJ3GM2N",
+            "name": "Compact Hair Dryer",
+            "description": "A lightweight hair dryer with multiple heat and speed settings for home or travel.",
+            "picture": "/static/img/products/hairdryer.jpg",
+            "priceUsd": {
+                "currencyCode": "USD",
+                "units": 24,
+                "nanos": 990000000
+            },
+            "categories": ["beauty", "personal-care"]
+        },
+        {
+            "id": "0PUK6V6EV0",
+            "name": "Decorative Candle Holder",
+            "description": "A small home accent for shelves, tables, and gift baskets.",
+            "picture": "/static/img/products/candle-holder.jpg",
+            "priceUsd": {
+                "currencyCode": "USD",
+                "units": 18,
+                "nanos": 990000000
+            },
+            "categories": ["home", "decor"]
+        },
+        {
+            "id": "LS4PSXUNUM",
+            "name": "Salt and Pepper Shakers",
+            "description": "Simple kitchen shakers for everyday meals and table settings.",
+            "picture": "/static/img/products/salt-and-pepper-shakers.jpg",
+            "priceUsd": {
+                "currencyCode": "USD",
+                "units": 18,
+                "nanos": 490000000
+            },
+            "categories": ["home", "kitchen"]
+        },
+        {
+            "id": "9SIQT8TOJO",
+            "name": "Bamboo Lid Storage Jar",
+            "description": "A glass storage jar for pantry staples, snacks, coffee, or kitchen organization.",
+            "picture": "/static/img/products/bamboo-glass-jar.jpg",
+            "priceUsd": {
+                "currencyCode": "USD",
+                "units": 5,
+                "nanos": 490000000
+            },
+            "categories": ["home", "kitchen"]
+        },
+        {
+            "id": "6E92ZMYYFZ",
+            "name": "Ceramic Coffee Mug",
+            "description": "A simple daily mug for coffee, tea, cocoa, or an office desk setup.",
+            "picture": "/static/img/products/mug.jpg",
+            "priceUsd": {
+                "currencyCode": "USD",
+                "units": 8,
+                "nanos": 990000000
+            },
+            "categories": ["home", "kitchen"]
+        }
+    ]
+}
