@@ -23,6 +23,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.CT }}
 
       - name: Update CODEOWNERS
         if: ${{ github.event.inputs.new_team != '' }}
@@ -50,7 +52,7 @@ jobs:
       - name: Open PR
         uses: peter-evans/create-pull-request@v6
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.CT }}
           commit-message: "chore: update service config via Port"
           title: "chore(${{ github.event.inputs.service_identifier }}): update service config"
           body: |
