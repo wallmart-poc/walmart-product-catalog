@@ -3,7 +3,7 @@
   "title": "Product Catalog Service",
   "blueprint": "service",
   "properties": {
-    "lifecycle": "deprecated",
+    "lifecycle": "production",
     "criticality": "high",
     "slack_channel": "#catalog-discovery",
     "type": "grpc",
