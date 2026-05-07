@@ -1,0 +1,69 @@
+name: Update Service Config
+
+on:
+  workflow_dispatch:
+    inputs:
+      new_team:
+        required: false
+      lifecycle:
+        required: false
+      criticality:
+        required: false
+      slack_channel:
+        required: false
+      reason:
+        required: false
+      service_identifier:
+        required: true
+      port_run_id:
+        required: true
+
+jobs:
+  update-config:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Update CODEOWNERS
+        if: ${{ github.event.inputs.new_team != '' }}
+        run: |
+          if grep -q '^\*' CODEOWNERS 2>/dev/null; then
+            sed -i "s|^\* @[^ ]*|* @wallmart-poc/${{ github.event.inputs.new_team }}|" CODEOWNERS
+          else
+            echo "* @wallmart-poc/${{ github.event.inputs.new_team }}" > CODEOWNERS
+          fi
+
+      - name: Update port.json
+        run: |
+          PORT_JSON=$(cat port.json 2>/dev/null || echo '{"properties":{}}')
+          if [ -n "${{ github.event.inputs.lifecycle }}" ]; then
+            PORT_JSON=$(echo "$PORT_JSON" | jq --arg v "${{ github.event.inputs.lifecycle }}" '.properties.lifecycle = $v')
+          fi
+          if [ -n "${{ github.event.inputs.criticality }}" ]; then
+            PORT_JSON=$(echo "$PORT_JSON" | jq --arg v "${{ github.event.inputs.criticality }}" '.properties.criticality = $v')
+          fi
+          if [ -n "${{ github.event.inputs.slack_channel }}" ]; then
+            PORT_JSON=$(echo "$PORT_JSON" | jq --arg v "${{ github.event.inputs.slack_channel }}" '.properties.slack_channel = $v')
+          fi
+          echo "$PORT_JSON" | jq '.' > port.json
+
+      - name: Open PR
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: "chore: update service config via Port"
+          title: "chore(${{ github.event.inputs.service_identifier }}): update service config"
+          body: |
+            ## Service Config Update
+            Triggered via Port self-service action.
+            **Reason:** ${{ github.event.inputs.reason || 'Not specified' }}
+          branch: "port/service-config-${{ github.run_id }}"
+
+      - name: Report to Port
+        if: always()
+        run: |
+          STATUS=$([[ "${{ job.status }}" == "success" ]] && echo "SUCCESS" || echo "FAILURE")
+          curl -s -X PATCH "https://api.getport.io/v1/actions/runs/${{ github.event.inputs.port_run_id }}" \
+            -H "Authorization: Bearer ${{ secrets.PORT_API_TOKEN }}" \
+            -H "Content-Type: application/json" \
+            -d "{\"status\": \"$STATUS\"}"
